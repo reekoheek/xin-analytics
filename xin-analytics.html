@@ -1,0 +1,23 @@
+<script type="text/javascript">
+(function(root) {
+  'use strict';
+
+  Polymer({
+    is: 'xin-analytics',
+
+    properties: {
+      code: String,
+    },
+
+    ready: function() {
+      document.addEventListener('deviceready', function() {
+        if (window.analytics) {
+          window.analytics.startTrackerWithId(this.code);
+
+          window.analytics.trackView(location.href);
+        }
+      });
+    }
+  });
+})(this);
+</script>
