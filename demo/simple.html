@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="fit">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Simple analytics</title>
+
+  <style>
+    body {
+      font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    }
+
+    h1 {
+      font-weight: lighter;
+      text-align: center;
+    }
+
+    a {
+      flex: 1;
+      text-decoration: none;
+      color: #00f;
+      text-align: center;
+      border-left: 1px solid #00f;
+      display: block;
+      padding: 5px;
+    }
+
+    a:nth-child(1) {
+      border-left: 0 none;
+    }
+
+    a:focus, a:active {
+      color: #fff;
+      background-color: #00f;
+    }
+
+    button {
+      width: 100%;
+      display: block;
+      border: 1px solid #00f;
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 20px;
+      color: #00f;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    .menu-bg {
+      background-color: #ddd;
+    }
+
+    .menu {
+      background-color: #fff;
+      margin: 10px;
+      border: 1px solid #00f;
+      height: auto!important;
+      border-radius: 5px;
+    }
+
+    xin-view {
+      padding: 10px;
+    }
+
+    xin-view > div {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 100;
+      color: #333;
+    }
+
+    .home-view {
+      background-color: #ffa;
+    }
+
+    .foo-view {
+      background-color: #faf;
+    }
+
+    .bar-view {
+      background-color: #aff;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="/bower_components/xin-analytics/xin-analytics.html">
+  <link rel="import" href="/bower_components/xin/xin-layout.html">
+  <link rel="import" href="/bower_components/xin/xin-app.html">
+  <link rel="import" href="/bower_components/xin/xin-pager.html">
+  <link rel="import" href="/bower_components/xin/xin-view.html">
+
+  <xin-app id="app" class="layout">
+    <template>
+      <!-- web based app -->
+      <xin-analytics tracker-id="UA-83702017-3" id="analytics"></xin-analytics>
+      <!-- cordova based app -->
+      <!-- <xin-analytics tracker-id="UA-83702017-2"></xin-analytics> -->
+      <div class="menu-bg">
+        <div class="menu layout horizontal">
+          <a href="#!/">Home</a>
+          <a href="#!/foo">Foo</a>
+          <a href="#!/bar">Bar</a>
+        </div>
+      </div>
+      <xin-pager class="flex">
+        <xin-view uri="/" class="home-view">
+          <h1>Home</h1>
+
+          <section>
+            <button on-tap="hit">Hit</button>
+            <button on-tap="dodge">Dodge</button>
+          </section>
+        </xin-view>
+        <xin-view uri="/foo" class="foo-view">
+          <div>Foo</div>
+        </xin-view>
+        <xin-view uri="/bar" class="bar-view">
+          <div>Bar</div>
+        </xin-view>
+      </xin-pager>
+    </template>
+  </xin-app>
+
+  <script>
+  (function() {
+    'use strict';
+
+    app.hit = function(evt) {
+      evt.preventDefault();
+      analytics.sendEvent('game', 'hit');
+      alert('Hit');
+    };
+
+    app.dodge = function(evt) {
+      evt.preventDefault();
+      analytics.sendEvent('game', 'dodge');
+      alert('Dodge');
+    };
+  })();
+  </script>
+</body>
+</html>

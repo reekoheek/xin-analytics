@@ -1,15 +1,13 @@
 {
   "name": "xin-analytics",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "authors": [
     "Ganesha <reekoheek@gmail.com>"
   ],
   "description": "Xin 2.0 Analytics component.",
   "keywords": [
     "web-component",
-    "web-components",
-    "polymer",
-    "polim"
+    "web-components"
   ],
   "main": "xin-analytics.html",
   "license": "MIT",
@@ -19,10 +17,6 @@
     "/demo/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0"
-  },
-  "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "web-component-tester": "*"
+    "xin": "xinix-technology/xin#ver-2.x"
   }
 }
