@@ -4,7 +4,11 @@
   "description": "Xin Google Analytics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build:webpack": "webpack",
+    "build": "yarn run clean && yarn run build:webpack && NODE_ENV=production yarn run build:webpack",
+    "test:lint": "eslint .",
+    "test": "yarn run test:lint"
   },
   "repository": {
     "type": "git",
@@ -17,9 +21,16 @@
   },
   "homepage": "https://github.com/reekoheek/xin-analytics#readme",
   "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "eslint": "^3.9.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "webpack": "^1.13.3"
   }
 }

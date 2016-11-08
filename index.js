@@ -17,12 +17,12 @@ class XinAnalytics extends xin.Component {
   }
 
   get props () {
-    return xin.mix(super.props, {
+    return {
       trackerId: {
         type: String,
         required: true,
       },
-    });
+    };
   }
 
   attached () {
@@ -40,7 +40,7 @@ class XinAnalytics extends xin.Component {
       if (window.analytics) {
         this.startPageTracking();
       }
-    });
+    }, true);
   }
 
   startPageTracking () {
@@ -49,7 +49,7 @@ class XinAnalytics extends xin.Component {
       window.analytics.trackView(window.location.href);
     } else {
       window.ga('create', this.trackerId, 'none');
-      this.__app.addEventListener('navigated', evt => {
+      this.__app.on('navigated', evt => {
         window.ga('send', 'pageview', evt.detail.uri);
       });
     }
