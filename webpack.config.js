@@ -2,11 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 
 const ENV = process.env.NODE_ENV || 'development';
-const ANALYZE = process.env.ANALYZE || false;
 
-console.info(`
+console.error(`
   ENV ${ENV}
-  ANALYZE ${ANALYZE}
 `);
 
 function getPlugins () {
@@ -39,13 +37,17 @@ module.exports = {
       {
         test: /\.css$/,
         include: /\/(css|node_modules\/xin)\//,
-        loader: 'style!css',
+        loader: [
+          require.resolve('style-loader'),
+          require.resolve('css-loader'),
+        ],
       },
       {
         test: /\.js$/,
         include: /(index\.js|node_modules\/(xin|template-binding)\/)/,
-        loader: 'babel',
+        loader: require.resolve('babel-loader'),
         query: {
+          presets: ['es2015', 'stage-3'],
           cacheDirectory: true,
         },
       },
