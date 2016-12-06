@@ -20,12 +20,13 @@ class XinAnalytics extends xin.Component {
     return {
       trackerId: {
         type: String,
-        required: true,
       },
     };
   }
 
   attached () {
+    super.attached();
+
     if (typeof window.cordova === 'undefined' || window.cordova.platformId === 'browser') {
       this.isCordova = false;
 
@@ -44,6 +45,9 @@ class XinAnalytics extends xin.Component {
   }
 
   startPageTracking () {
+    if (!this.trackerId) {
+      throw new Error('Cannot found tracker id');
+    }
     if (this.isCordova) {
       window.analytics.startTrackerWithId(this.trackerId);
       window.analytics.trackView(window.location.href);

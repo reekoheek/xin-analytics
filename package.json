@@ -20,6 +20,9 @@
     "url": "https://github.com/reekoheek/xin-analytics/issues"
   },
   "homepage": "https://github.com/reekoheek/xin-analytics#readme",
+  "dependencies": {
+    "xin": "xinix-technology/xin#next"
+  },
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
