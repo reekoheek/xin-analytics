@@ -1,14 +1,12 @@
 {
   "name": "xin-analytics",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Xin Google Analytics",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build:webpack": "webpack",
-    "build": "yarn run clean && yarn run build:webpack && NODE_ENV=production yarn run build:webpack",
-    "test:lint": "eslint .",
-    "test": "yarn run test:lint"
+    "dev": "webpack-dev-server",
+    "lint": "eslint .",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -21,7 +19,7 @@
   },
   "homepage": "https://github.com/reekoheek/xin-analytics#readme",
   "dependencies": {
-    "xin": "xinix-technology/xin#next"
+    "xin": "xinix-technology/xin#2.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -32,6 +30,6 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.1",
-    "webpack": "2.1.0-beta.27"
+    "webpack": "2"
   }
 }

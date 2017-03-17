@@ -1,3 +1,6 @@
-*.sublime-*
-bower_components
+# Package Management
 node_modules
+yarn.lock
+
+# Development
+*.sublime-*

@@ -1,2 +1,3 @@
 # xin-analytics
-Xin Google Analytics
+
+Xin component to use Google Analytics
